@@ -37,3 +37,4 @@ add_executable(tests
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 target_include_directories(tests PRIVATE src/)
 add_test(tests env CTEST_OUTPUT_ON_FAILURE=1 ./tests)
+
