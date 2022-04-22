@@ -2,21 +2,14 @@
 
 #include <iostream>
 
-using namespace std;
-
 class Rational {
 public:
-    int counter;
-    int denominator;
-
-    friend ostream& operator<<(ostream& os, const Rational &rational);
+    int counter, denominator;
 
     Rational();
-
-    Rational(int num, int denom);
-
-    Rational(const Rational &rational);
-
+    Rational(const int, const int);
+    Rational(const Rational&);
     ~Rational();
 
+    friend std::ostream& operator<<(std::ostream&, const Rational&);
 };
