@@ -9,7 +9,7 @@ Rational::Rational()
 {
 }
 
-Rational::Rational(int counter, int denominator)
+Rational::Rational(const int counter, const int denominator)
     : counter { counter }
     , denominator { denominator }
 {
