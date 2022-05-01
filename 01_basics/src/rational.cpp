@@ -68,7 +68,6 @@ bool operator<(const Rational& a, const Rational& b)
     return (a.counter * b.denominator) < (b.counter * a.denominator);
 }
 
-
 Rational Rational::operator-() const
 {
     return Rational(-counter, denominator);
