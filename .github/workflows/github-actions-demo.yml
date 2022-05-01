@@ -8,7 +8,13 @@ jobs:
         uses: actions/checkout@v3
       - name: List files in the repository
         run: |
-          pwd
-          ls -la ${{ github.workspace }}
-          cd ${{ github.workspace }}
-          pwd
+          which clang
+          which clang++
+          which gcc
+          which make
+          make --version
+          clang --version
+          clang++ --version
+          gcc --version
+          cd 01_basics
+          make test
