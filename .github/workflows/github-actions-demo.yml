@@ -9,7 +9,15 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Apply filters
+        uses: dorny/paths-filter@v2
+        id: filters
+        with:
+          filters: |
+            ass_1:
+              - '01_basics/**'
       - name: Run tests for assignment 1
+        if: steps.filters.outputs.ass_1 == 'true'
         run: |
           cd 01_basics
           make test
