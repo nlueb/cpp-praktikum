@@ -1,20 +1,15 @@
 name: GitHub Actions Demo
 on: [push]
+env:
+  CC: /usr/bin/clang
+  CXX: /usr/bin/clang++
 jobs:
-  Explore-GitHub-Actions:
+  Test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: List files in the repository
+      - name: Run tests for assignment 1
         run: |
-          which clang
-          which clang++
-          which gcc
-          which make
-          make --version
-          clang --version
-          clang++ --version
-          gcc --version
           cd 01_basics
           make test
