@@ -4,7 +4,6 @@
 
 #include <sstream>
 
-
 TEST_CASE("rational")
 {
     Rational a;
@@ -13,7 +12,6 @@ TEST_CASE("rational")
     REQUIRE((a.counter == 1 && a.denominator == 2));
     REQUIRE((b.counter == 2 && b.denominator == 4));
     REQUIRE((c.counter == 1 && c.denominator == 3));
-    REQUIRE(false);
 
     Rational d = a + b;
     REQUIRE(d.counter == d.denominator);
