@@ -1,0 +1,23 @@
+name: CI
+on: [push]
+env:
+  CC: /usr/bin/clang
+  CXX: /usr/bin/clang++
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Apply filters
+        uses: dorny/paths-filter@v2
+        id: filters
+        with:
+          filters: |
+            ass_1:
+              - '01_basics/**'
+      - name: Run tests for assignment 1
+        if: steps.filters.outputs.ass_1 == 'true'
+        run: |
+          cd 01_basics
+          make test

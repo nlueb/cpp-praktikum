@@ -1,11 +1,14 @@
-#include <catch2/catch_test_macros.hpp>
-#include <sstream>
 #include "rational.hpp"
 
-TEST_CASE("rational") {
+#include <catch2/catch_test_macros.hpp>
+
+#include <sstream>
+
+TEST_CASE("rational")
+{
     Rational a;
-    Rational b{ 2, 4 };
-    Rational c{ 1, 3 };
+    Rational b { 2, 4 };
+    Rational c { 1, 3 };
     REQUIRE((a.counter == 1 && a.denominator == 2));
     REQUIRE((b.counter == 2 && b.denominator == 4));
     REQUIRE((c.counter == 1 && c.denominator == 3));
