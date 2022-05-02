@@ -14,6 +14,7 @@ public:
     std::string getBezeichnung() const;
     float getPreis() const;
     int getBestellnummer() const;
+    std::string getCSV() const;
 };
 
 void speichern(const std::string& dateiname, const std::vector<Food>& speisen);
