@@ -55,7 +55,13 @@ std::vector<cppp::Item> cppp::Map::get(const std::string& key)
 
 void cppp::Map::remove(const std::string& key)
 {
-    // TODO
+    std::size_t index = this->calcHash(key);
+    MapBucket& bucket = this->arr[index];
+
+    bucket.erase(std::remove_if(bucket.begin(),
+                                bucket.end(),
+                                [&key](MapElement& m) { return m.key == key; }),
+                 bucket.end());
 }
 
 std::size_t cppp::Map::calcHash(const std::string& key)
