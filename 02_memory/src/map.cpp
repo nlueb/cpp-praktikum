@@ -33,5 +33,9 @@ void cppp::Map::remove(const std::string& key)
 
 std::size_t cppp::Map::calcHash(const std::string& key)
 {
-    return 0; // TODO
+    std::size_t hash = 0;
+    for (const char& c : key) {
+        hash += static_cast<std::size_t>(c);
+    }
+    return hash % size;
 }
