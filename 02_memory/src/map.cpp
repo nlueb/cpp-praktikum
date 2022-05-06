@@ -23,7 +23,7 @@ void cppp::Map::insert(const std::string& key, const std::vector<Item>& order)
     MapBucket& bucket = this->arr[index];
 
     if (bucket.empty()) {
-        bucket.emplace_back(key, order);
+        bucket.push_back({ key, order });
         return;
     }
 
@@ -36,7 +36,7 @@ void cppp::Map::insert(const std::string& key, const std::vector<Item>& order)
     }
 
     // Bucket does not contain key so adding it
-    bucket.emplace_back(key, order);
+    bucket.push_back({ key, order });
 }
 
 std::vector<cppp::Item> cppp::Map::get(const std::string& key)
