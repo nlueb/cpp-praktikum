@@ -6,14 +6,14 @@
 #include <vector>
 
 cppp::Map::Map(const std::size_t size)
-    : size(size)
+    : size { size }
+    , arr { new MapBucket[size] }
 {
-    // TODO
 }
 
 cppp::Map::~Map()
 {
-    // TODO
+    delete[] arr;
 }
 
 void cppp::Map::insert(const std::string& key, const std::vector<Item>& order)
