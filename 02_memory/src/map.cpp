@@ -19,7 +19,7 @@ cppp::Map::~Map()
 
 void cppp::Map::insert(const std::string& key, const std::vector<Item>& order)
 {
-    std::size_t index = this->calcHash(key);
+    const std::size_t index = this->calcHash(key);
     MapBucket& bucket = this->arr[index];
 
     if (bucket.empty()) {
@@ -41,10 +41,10 @@ void cppp::Map::insert(const std::string& key, const std::vector<Item>& order)
 
 std::vector<cppp::Item> cppp::Map::get(const std::string& key)
 {
-    std::size_t index = this->calcHash(key);
-    MapBucket& bucket = this->arr[index];
+    const std::size_t index = this->calcHash(key);
+    const MapBucket& bucket = this->arr[index];
 
-    for (MapElement& elem : bucket) {
+    for (const MapElement& elem : bucket) {
         if (elem.key == key) {
             return elem.value;
         }
@@ -55,12 +55,12 @@ std::vector<cppp::Item> cppp::Map::get(const std::string& key)
 
 void cppp::Map::remove(const std::string& key)
 {
-    std::size_t index = this->calcHash(key);
+    const std::size_t index = this->calcHash(key);
     MapBucket& bucket = this->arr[index];
 
     bucket.erase(std::remove_if(bucket.begin(),
                                 bucket.end(),
-                                [&key](MapElement& m) { return m.key == key; }),
+                                [&key](const MapElement& m) { return m.key == key; }),
                  bucket.end());
 }
 
