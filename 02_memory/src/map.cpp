@@ -10,6 +10,13 @@ cppp::Map::Map(const std::size_t size)
     : size { size }
     , arr { new MapBucket[size] }
 {
+    /*
+    > Worin unterscheiden sich die beiden Funktionen? [https://stackoverflow.com/a/7397862]
+    - std::vector::reserve only allocates memory, but leaves it uninitialized and does not change the size of the vector
+    - std::vector::resize will insert or delete appropriate number of elements to the vector to make it given size (it has optional second argument to specify their value)
+    > Welche müsste in diesem Kontext verwendet werden um den gleichen Effekt wie die Arrayallokation zu erreichen?
+    - std::vector::reserve
+    */
 }
 
 cppp::Map::~Map()
