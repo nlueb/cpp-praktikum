@@ -73,9 +73,9 @@ void cppp::Map::remove(const std::string& key)
 
 std::size_t cppp::Map::calcHash(const std::string& key)
 {
-    std::size_t hash = 0;
+    std::size_t sum = 0;
     for (const char& c : key) {
-        hash += static_cast<std::size_t>(c);
+        sum += static_cast<std::size_t>(c);
     }
-    return hash % size;
+    return sum % size;
 }
