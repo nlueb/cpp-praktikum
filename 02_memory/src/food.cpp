@@ -43,8 +43,7 @@ void laden(const std::string& dateiname, std::vector<Food>& speisen)
     std::string line, nr, name, preis;
 
     if (!is.is_open()) {
-        std::cerr << "Could not open file '" << dateiname << "'." << std::endl;
-        exit(EXIT_FAILURE);
+        throw std::runtime_error("Could not open file '" + dateiname + "'.");
     }
 
     while (std::getline(is, line))
@@ -58,11 +57,7 @@ void laden(const std::string& dateiname, std::vector<Food>& speisen)
             speisen.emplace_back(std::stoi(nr), name, std::stof(preis));
         }
         catch (std::invalid_argument &e) {
-            is.close();
-            std::cerr << "Error reading '" << dateiname << "'." << std::endl;
-            std::cerr << "Line " << line << " does not apply to the expected structure of 'int;string;float'." << std::endl;
-            exit(EXIT_FAILURE);
+            throw std::runtime_error("Error reading '" + dateiname + "'.\n" + "Line '" + line + "' does not apply to the expected structure of 'int;string;float'.");
         }
     }
-    is.close();
 }
