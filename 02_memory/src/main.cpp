@@ -4,10 +4,17 @@
 #include <iostream>
 #include <vector>
 
-int main(int argc, char** argv)
+int main()
 {
     std::vector<Food> food_vec;
-    laden("../food.csv", food_vec);
+
+    try {
+        laden("food.csv", food_vec);
+    } catch (std::runtime_error& e) {
+        std::cerr << e.what() << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
     for (Food& food : food_vec) {
         std::cout << food.getCSV();
     }
