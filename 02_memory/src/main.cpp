@@ -1,7 +1,8 @@
 #include "food.hpp"
 #include "map.hpp"
-#include <vector>
+
 #include <iostream>
+#include <vector>
 
 int main(int argc, char** argv)
 {

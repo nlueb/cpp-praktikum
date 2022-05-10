@@ -39,15 +39,14 @@ void speichern(const std::string& dateiname, const std::vector<Food>& speisen)
 
 void laden(const std::string& dateiname, std::vector<Food>& speisen)
 {
-    std::ifstream is{ dateiname };
+    std::ifstream is { dateiname };
     std::string line, nr, name, preis;
 
     if (!is.is_open()) {
         throw std::runtime_error("Could not open file '" + dateiname + "'.");
     }
 
-    while (std::getline(is, line))
-    {
+    while (std::getline(is, line)) {
         std::stringstream ss(line);
         std::getline(ss, nr, ';');
         std::getline(ss, name, ';');
@@ -55,8 +54,7 @@ void laden(const std::string& dateiname, std::vector<Food>& speisen)
 
         try {
             speisen.emplace_back(std::stoi(nr), name, std::stof(preis));
-        }
-        catch (std::invalid_argument &e) {
+        } catch (std::invalid_argument& e) {
             throw std::runtime_error("Error reading '" + dateiname + "'.\n" + "Line '" + line + "' does not apply to the expected structure of 'int;string;float'.");
         }
     }
