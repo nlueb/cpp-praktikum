@@ -1,5 +1,6 @@
 #include "food.hpp"
 
+#include <unistd.h>
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -51,7 +52,7 @@ void laden(const std::string& dateiname, std::vector<Food>& speisen)
     constexpr std::size_t PRICE = 3;
 
     if (!is.is_open()) {
-        throw std::runtime_error("Could not open file '" + dateiname + "'.");
+        throw std::runtime_error("Could not open file '" + std::string(get_current_dir_name()) + "/" + dateiname + "'.");
     }
 
     while (std::getline(is, line)) {
