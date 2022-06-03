@@ -9,5 +9,7 @@
 int main()
 {
     Board board{};
+    HumanPlayer player{Color::CROSS};
+    player.performNextMove(board);
     std::cout << board << std::endl;
 }
