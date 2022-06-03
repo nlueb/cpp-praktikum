@@ -47,4 +47,6 @@ public:
     std::optional<GameStatus> whoWon() const;
 };
 
+std::ostream& operator<<(std::ostream& os, const Field& field);
+
 std::ostream& operator<<(std::ostream& os, const Board& board);

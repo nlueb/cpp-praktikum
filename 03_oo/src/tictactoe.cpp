@@ -1,11 +1,13 @@
 #include "game_controller.hpp"
 #include "human_player.hpp"
 #include "normal_player.hpp"
+#include "board.hpp"
 
 #include <iostream>
 #include <string>
 
 int main()
 {
-    // TODO
+    Board board{};
+    std::cout << board << std::endl;
 }

@@ -85,8 +85,18 @@ std::optional<GameStatus> Board::whoWon() const
     return GameStatus::TIE;
 }
 
+std::ostream& operator<<(std::ostream& os, const Field& field) {
+    return os << (field == Field::CROSS ? "X" : field == Field::CIRCLE ? "O" : " ");
+}
+
 std::ostream& operator<<(std::ostream& os, const Board& board)
 {
-    // TODO
+    for (const auto& row : board) {
+        os << "|";
+        for (const auto& field : row) {
+            os << " " << field << " |";
+        }
+        os << "\n";
+    }
     return os;
 }
