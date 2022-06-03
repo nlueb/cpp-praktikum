@@ -1,15 +1,19 @@
 #include "normal_player.hpp"
 
+#include "random_player.hpp"
+
 #include <cstdlib>
+#include <iostream>
 
 NormalPlayer::NormalPlayer(Color color)
-    : PerfectPlayer(color)
+    : Player(color)
     , RandomPlayer(color)
-    , Player(color)
+    , PerfectPlayer(color)
 {
 }
 
 void NormalPlayer::performNextMove(Board& board)
 {
-    // TODO
+    int player = std::rand() % 2;
+    player == 1 ? RandomPlayer::performNextMove(board) : PerfectPlayer::performNextMove(board);
 }

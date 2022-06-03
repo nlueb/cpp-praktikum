@@ -8,5 +8,5 @@ public:
     void play(Player& cross, Player& circle);
 
 private:
-    Board board;
+    Board board {};
 };
