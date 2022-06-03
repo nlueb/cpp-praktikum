@@ -85,8 +85,24 @@ std::optional<GameStatus> Board::whoWon() const
     return GameStatus::TIE;
 }
 
-std::ostream& operator<<(std::ostream& os, const Field& field) {
-    return os << (field == Field::CROSS ? "X" : field == Field::CIRCLE ? "O" : " ");
+std::vector<FieldPos> Board::get_emtpy_fields() const
+{
+    std::vector<FieldPos> empty_fields;
+    for (std::size_t i = 0; i < BOARD_SIZE; ++i) {
+        for (std::size_t j = 0; j < BOARD_SIZE; ++j) {
+            if (fields[i][j] == Field::EMPTY) {
+                empty_fields.emplace_back(i, j);
+            }
+        }
+    }
+    return empty_fields;
+}
+
+std::ostream&
+operator<<(std::ostream& os, const Field& field)
+{
+    return os << (field == Field::CROSS ? "X" : field == Field::CIRCLE ? "O"
+                                                                       : " ");
 }
 
 std::ostream& operator<<(std::ostream& os, const Board& board)

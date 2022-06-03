@@ -3,13 +3,15 @@
 #include "normal_player.hpp"
 #include "board.hpp"
 
+#include <ctime>
 #include <iostream>
 #include <string>
 
 int main()
 {
+    std::srand(std::time(nullptr));
     Board board{};
-    HumanPlayer player{Color::CROSS};
+    RandomPlayer player{Color::CROSS};
     player.performNextMove(board);
     std::cout << board << std::endl;
 }

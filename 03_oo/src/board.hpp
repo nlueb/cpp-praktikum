@@ -16,6 +16,8 @@ enum class Field { CROSS,
 enum class Color { CROSS,
                    CIRCLE };
 
+using FieldPos = std::pair<std::size_t, std::size_t>;
+
 GameStatus asGameStatus(Color color);
 GameStatus asGameStatus(Field field);
 Field asField(Color color);
@@ -25,7 +27,7 @@ class Board {
     using Fields = std::vector<std::vector<Field>>;
     Fields fields;
 
-    const std::vector<std::vector<std::pair<std::size_t, std::size_t>>> win_conditions {
+    const std::vector<std::vector<FieldPos>> win_conditions {
         { std::make_pair(0, 0), std::make_pair(0, 1), std::make_pair(0, 2) },
         { std::make_pair(1, 0), std::make_pair(1, 1), std::make_pair(1, 2) },
         { std::make_pair(2, 0), std::make_pair(2, 1), std::make_pair(2, 2) },
@@ -45,6 +47,8 @@ public:
     const std::vector<Field>& operator[](size_t i) const { return fields[i]; }
 
     std::optional<GameStatus> whoWon() const;
+
+    std::vector<FieldPos> get_emtpy_fields() const;
 };
 
 std::ostream& operator<<(std::ostream& os, const Field& field);
