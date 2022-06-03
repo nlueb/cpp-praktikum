@@ -8,7 +8,7 @@ HumanPlayer::HumanPlayer(Color color)
 {
 }
 
-void HumanPlayer::performNextMove(Board& board)
+std::pair<std::size_t, std::size_t> HumanPlayer::getUserInput()
 {
     std::string input;
     std::regex re { "^([012]) ([012])$" };
@@ -24,5 +24,11 @@ void HumanPlayer::performNextMove(Board& board)
     } while (!std::regex_search(input, matches, re));
 
     std::cout << "Alles klar!" << std::endl;
-    board[std::stoi(matches[1].str())][std::stoi(matches[2].str())] = asField(this->color);
+    return { std::stoi(matches[1].str()), std::stoi(matches[2].str()) };
+}
+
+void HumanPlayer::performNextMove(Board& board)
+{
+    const auto [i, j] = getUserInput();
+    board[i][j] = asField(this->color);
 }

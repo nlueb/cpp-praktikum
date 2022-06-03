@@ -9,5 +9,5 @@ RandomPlayer::RandomPlayer(Color color)
 
 void RandomPlayer::performNextMove(Board& board)
 {
-    // TODO
+
 }
