@@ -61,17 +61,6 @@ Board::Board()
 {
 }
 
-const std::vector<std::vector<std::pair<std::size_t, std::size_t>>> win_conditions {
-    { std::make_pair(0, 0), std::make_pair(0, 1), std::make_pair(0, 2) },
-    { std::make_pair(1, 0), std::make_pair(1, 1), std::make_pair(1, 2) },
-    { std::make_pair(2, 0), std::make_pair(2, 1), std::make_pair(2, 2) },
-    { std::make_pair(0, 0), std::make_pair(1, 0), std::make_pair(2, 0) },
-    { std::make_pair(0, 1), std::make_pair(1, 1), std::make_pair(2, 1) },
-    { std::make_pair(0, 2), std::make_pair(1, 2), std::make_pair(2, 2) },
-    { std::make_pair(0, 0), std::make_pair(1, 1), std::make_pair(2, 2) },
-    { std::make_pair(0, 2), std::make_pair(1, 1), std::make_pair(2, 0) },
-};
-
 std::optional<GameStatus> Board::whoWon() const
 {
     for (const auto& win_condition : win_conditions) {
