@@ -13,6 +13,12 @@
 
 constexpr std::size_t BOARD_SIZE = 3;
 
+FieldPos::FieldPos(std::size_t row, std::size_t col)
+    : row { row }
+    , col { col }
+{
+}
+
 GameStatus asGameStatus(Color color)
 {
     switch (color) {
@@ -56,27 +62,28 @@ Color enemyOf(Color color)
 }
 
 Board::Board()
-    : fields(std::vector<std::vector<Field>>(
-        BOARD_SIZE, std::vector<Field>(BOARD_SIZE, Field::EMPTY)))
+    : fields { BOARD_SIZE, { BOARD_SIZE, Field::EMPTY } }
 {
 }
 
 std::optional<GameStatus> Board::whoWon() const
 {
-    for (const auto& win_condition : win_conditions) {
-        if (std::all_of(std::begin(win_condition), std::end(win_condition), [this](const auto& x) {
-                return fields[x.first][x.second] == Field::CROSS;
-            })) {
+    using std::cbegin, std::cend, std::ranges::all_of, std::ranges::any_of;
+    const auto are = [this](const Field which) {
+        return [this, which](const FieldPos& pos) {
+            return fields[pos.row][pos.col] == which;
+        };
+    };
+    for (const auto& fields_to_check : win_conditions) {
+        if (all_of(fields_to_check, are(Field::CROSS))) {
             return GameStatus::CROSS;
         }
-        if (std::all_of(std::begin(win_condition), std::end(win_condition), [this](const auto& x) {
-                return fields[x.first][x.second] == Field::CIRCLE;
-            })) {
+        if (all_of(fields_to_check, are(Field::CIRCLE))) {
             return GameStatus::CIRCLE;
         }
     }
-    if (std::any_of(std::begin(fields), std::end(fields), [](const auto& row) {
-            return std::any_of(std::begin(row), std::end(row), [](Field field) {
+    if (any_of(fields, [](const auto& row) {
+            return any_of(row, [](Field field) {
                 return field == Field::EMPTY;
             });
         })) {
@@ -88,10 +95,10 @@ std::optional<GameStatus> Board::whoWon() const
 std::vector<FieldPos> Board::get_emtpy_fields() const
 {
     std::vector<FieldPos> empty_fields;
-    for (std::size_t i = 0; i < BOARD_SIZE; ++i) {
-        for (std::size_t j = 0; j < BOARD_SIZE; ++j) {
-            if (fields[i][j] == Field::EMPTY) {
-                empty_fields.emplace_back(i, j);
+    for (std::size_t i_row = 0; i_row < BOARD_SIZE; ++i_row) {
+        for (std::size_t i_col = 0; i_col < BOARD_SIZE; ++i_col) {
+            if (fields[i_row][i_col] == Field::EMPTY) {
+                empty_fields.emplace_back(i_row, i_col);
             }
         }
     }

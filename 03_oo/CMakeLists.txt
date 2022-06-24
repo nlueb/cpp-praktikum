@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.0)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(tictactoe)
@@ -17,6 +17,7 @@ add_library(common OBJECT
     src/board.cpp
     src/player.cpp
     src/game_controller.cpp
+    src/util.cpp
 )
 
 # Executable

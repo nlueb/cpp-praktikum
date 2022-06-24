@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-xc++, -std=c++17, -Wall, -Wextra, -Wpedantic]
+  Add: [-xc++, -std=c++20, -Wall, -Wextra, -Wpedantic]
   Compiler: clang++
 Diagnostics:
   UnusedIncludes: Strict

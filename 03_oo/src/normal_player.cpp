@@ -14,6 +14,6 @@ NormalPlayer::NormalPlayer(Color color)
 
 void NormalPlayer::performNextMove(Board& board)
 {
-    int player = std::rand() % 2;
-    player == 1 ? RandomPlayer::performNextMove(board) : PerfectPlayer::performNextMove(board);
+    std::rand() % 2 == 1 ? RandomPlayer::performNextMove(board)
+                         : PerfectPlayer::performNextMove(board);
 }

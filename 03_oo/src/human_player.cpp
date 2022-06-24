@@ -1,6 +1,7 @@
 #include "human_player.hpp"
 
 #include "board.hpp"
+#include "util.hpp"
 
 #include <cstddef>
 #include <iostream>
@@ -23,21 +24,20 @@ FieldPos HumanPlayer::getUserInput()
         }
         std::cout << "Wo wollen Sie ihr Kreuz setzen? (Zählend von 0)" << std::endl;
         std::cout << "Eingabeformat: <Zeile> <Spalte>, zum Beispiel '2 0':\n>> " << std::flush;
-        std::getline(std::cin, input);
+        readline(input);
     } while (!std::regex_search(input, matches, re));
 
-    return { std::stoi(matches[1].str()), std::stoi(matches[2].str()) };
+    return FieldPos(std::stoi(matches[1].str()), std::stoi(matches[2].str()));
 }
 
 void HumanPlayer::performNextMove(Board& board)
 {
-    auto empty_fields = board.get_emtpy_fields();
     FieldPos pos { 1337, 69 };
     do {
         if (pos != FieldPos(1337, 69))
             std::cout << "Hör auf zu cheaten!" << std::endl;
         pos = getUserInput();
-    } while (board[pos.first][pos.second] != Field::EMPTY);
+    } while (board[pos.row][pos.col] != Field::EMPTY);
     std::cout << "Alles klar!" << std::endl;
-    board[pos.first][pos.second] = asField(this->color);
+    board[pos.row][pos.col] = asField(this->color);
 }
