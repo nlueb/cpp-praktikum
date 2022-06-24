@@ -3,11 +3,12 @@
 #include <cstddef>
 #include <functional>
 
-double newton(... fx, ... fderiv, double x0, size_t n);
+double newton(std::function<double(double)> fx, std::function<float(float)> fderiv, double x0, size_t n);
 
 template <typename T>
-T newtonTemp(... fx, ... fderiv, T x0, size_t n)
+T newtonTemp(std::function<T(T)> fx, std::function<T(T)> fderiv, T x0, size_t n)
 {
+    return {};
     // TODO
 }
 
