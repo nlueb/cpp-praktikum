@@ -8,8 +8,11 @@ double newton(std::function<double(double)> fx, std::function<float(float)> fder
 template <typename T>
 T newtonTemp(std::function<T(T)> fx, std::function<T(T)> fderiv, T x0, size_t n)
 {
-    return {};
-    // TODO
+    if (n == 0) {
+        return x0;
+    }
+    auto x_prev = newtonTemp(fx, fderiv, x0, n - 1);
+    return x_prev - fx(x_prev) / fderiv(x_prev);
 }
 
 template <typename T>
