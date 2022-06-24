@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <unordered_set>
+#include <vector>
 
 bool isValidChar(char c);
 
@@ -14,7 +15,7 @@ std::map<char, size_t> countIndividual(const std::string& input);
 std::list<char> usedSymbols(const std::string& input);
 
 class SymbolCounter {
-    // TODO
+    std::string schtring;
 
 public:
     explicit SymbolCounter(std::initializer_list<char> lst);

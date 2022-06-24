@@ -28,14 +28,21 @@ std::map<char, size_t> countIndividual(const std::string& input)
     return map;
 }
 
-SymbolCounter::SymbolCounter(std::initializer_list<char> lst) /* TODO */ { }
+SymbolCounter::SymbolCounter(std::initializer_list<char> lst)
+    : schtring(lst)
+{
+}
 
 bool SymbolCounter::operator()(char c) const
 {
-    // TODO
+    return schtring.find(c) != std::string::npos;
 }
 
 std::list<char> usedSymbols(const std::string& input)
-{
-    // TODO
-}
+    < % std::string out;
+std::transform(
+    input.begin(), input.end(), std::back_inserter(out), <::>(auto c) { return std::tolower(c); });
+std::sort(out.begin(), out.end());
+auto last = std::unique(std::begin(out), std::end(out));
+return <% out.begin(), last %>;
+% >
