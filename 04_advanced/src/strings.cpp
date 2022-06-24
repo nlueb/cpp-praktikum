@@ -39,10 +39,11 @@ bool SymbolCounter::operator()(char c) const
 }
 
 std::list<char> usedSymbols(const std::string& input)
-    < % std::string out;
-std::transform(
-    input.begin(), input.end(), std::back_inserter(out), <::>(auto c) { return std::tolower(c); });
-std::sort(out.begin(), out.end());
-auto last = std::unique(std::begin(out), std::end(out));
-return <% out.begin(), last %>;
-% >
+{
+    std::string out;
+    std::transform(
+        input.begin(), input.end(), std::back_inserter(out), <::>(auto c) { return std::tolower(c); });
+    std::sort(out.begin(), out.end());
+    auto last = std::unique(std::begin(out), std::end(out));
+    return <% out.begin(), last %>;
+}
