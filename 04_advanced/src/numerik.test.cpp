@@ -1,8 +1,9 @@
-#include <catch2/catch_test_macros.hpp>
-
 #include "numerik.hpp"
 
-TEST_CASE("numerik") {
+#include <catch2/catch_test_macros.hpp>
+
+TEST_CASE("numerik")
+{
     REQUIRE(fxTemp<int>(0) == 12);
     REQUIRE(fxTemp<int>(1) == 10);
     REQUIRE(fxTemp<int>(2) == 22);

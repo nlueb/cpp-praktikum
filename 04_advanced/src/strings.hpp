@@ -1,8 +1,8 @@
 #pragma once
-#include <string>
-#include <map>
-#include <list>
 #include <algorithm>
+#include <list>
+#include <map>
+#include <string>
 #include <unordered_set>
 
 size_t countAbc(const std::string& input);

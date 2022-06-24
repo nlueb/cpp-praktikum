@@ -1,15 +1,17 @@
-#include <cctype>
-#include <cstddef>
-#include "strings.hpp"
 #include "numerik.hpp"
+#include "strings.hpp"
+
+#include <algorithm>
+#include <cctype>
+#include <cmath>
+#include <cstddef>
 #include <initializer_list>
 #include <iostream>
 #include <iterator>
 #include <ostream>
 #include <string>
-#include <algorithm>
-#include <cmath>
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
     // TODO teste deine Implementationen
 }

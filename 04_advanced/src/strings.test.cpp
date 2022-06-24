@@ -1,8 +1,9 @@
-#include <catch2/catch_test_macros.hpp>
-
 #include "strings.hpp"
 
-TEST_CASE("strings") {
+#include <catch2/catch_test_macros.hpp>
+
+TEST_CASE("strings")
+{
     REQUIRE(countAbc("") == 0);
     REQUIRE(countAbc("@") == 0);
     REQUIRE(countAbc("A") == 1);
