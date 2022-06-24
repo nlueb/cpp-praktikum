@@ -11,7 +11,10 @@
 #include <ostream>
 #include <string>
 
-int main(int argc, char** argv)
+int main()
 {
-    // TODO teste deine Implementationen
+    auto mep = countIndividual("aWhyIHNlaWQgZG9jaCBrYWNrZQ==");
+    for (const auto& [key, value] : mep) {
+        std::cout << key << " -> " << value << std::endl;
+    }
 }
