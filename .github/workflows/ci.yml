@@ -20,6 +20,8 @@ jobs:
               - '02_memory/**'
             ass_3:
               - '03_oo/**'
+            ass_4:
+              - '04_advanced/**'
       - name: Run tests for assignment 1
         if: steps.filters.outputs.ass_1 == 'true'
         run: |
@@ -34,4 +36,9 @@ jobs:
         if: steps.filters.outputs.ass_3 == 'true'
         run: |
           cd 03_oo
+          make test
+      - name: Run tests for assignment 4
+        if: steps.filters.outputs.ass_4 == 'true'
+        run: |
+          cd 04_advanced
           make test
