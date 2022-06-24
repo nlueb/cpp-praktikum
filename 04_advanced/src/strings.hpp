@@ -5,6 +5,8 @@
 #include <string>
 #include <unordered_set>
 
+bool isValidChar(char c);
+
 size_t countAbc(const std::string& input);
 
 std::map<char, size_t> countIndividual(const std::string& input);
