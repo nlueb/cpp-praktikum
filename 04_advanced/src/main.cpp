@@ -13,12 +13,13 @@
 
 int main()
 {
-    auto fx = [](double x){ return std::pow(x, 3) + 4 * std::pow(x, 2) - 7 * x + 12; };
-    auto fderiv = [](float x){ return 3 * std::pow(x, 2) + 8 * x - 7; };
-    double solution = newton(fx, fderiv, 0, 1000);
-    std::cout << "4.2 a): " << solution << std::endl;
     auto mep = countIndividual("aWhyIHNlaWQgZG9jaCBrYWNrZQ==");
     for (const auto& [key, value] : mep) {
         std::cout << key << " -> " << value << std::endl;
     }
+
+    auto fx = [](double x){ return std::pow(x, 3) + 4 * std::pow(x, 2) - 7 * x + 12; };
+    auto fderiv = [](float x){ return 3 * std::pow(x, 2) + 8 * x - 7; };
+    double solution = newton(fx, fderiv, 0, 1000);
+    std::cout << "4.2 a): " << solution << std::endl;
 }

@@ -23,11 +23,7 @@ std::map<char, size_t> countIndividual(const std::string& input)
             continue;
         }
         c = static_cast<char>(std::tolower(c));
-        if (map.contains(c)) {
-            map[c]++;
-        } else {
-            map[c] = 1;
-        }
+        map[c] = map.count(c) + 1;
     }
     return map;
 }
