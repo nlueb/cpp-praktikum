@@ -22,6 +22,8 @@ jobs:
               - '03_oo/**'
             ass_4:
               - '04_advanced/**'
+            ass_5:
+              - '05_c/**'
       - name: Run tests for assignment 1
         if: steps.filters.outputs.ass_1 == 'true'
         run: |
@@ -41,4 +43,9 @@ jobs:
         if: steps.filters.outputs.ass_4 == 'true'
         run: |
           cd 04_advanced
+          make test
+      - name: Run tests for assignment 5
+        if: steps.filters.outputs.ass_5 == 'true'
+        run: |
+          cd 05_c
           make test
